@@ -121,7 +121,7 @@ describe('Home Page', () => {
   it('handles liking posts and saves to localStorage', async () => {
     render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
 
-    const likeButton = screen.getAllByRole('button', { name: /like/i })[0];
+    const likeButton = screen.getAllByTitle('likeButton')[0];
     fireEvent.click(likeButton);
 
     await waitFor(() => {
@@ -138,7 +138,7 @@ describe('Home Page', () => {
     render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
 
     // The first post should be marked as liked
-    const likeButtons = screen.getAllByRole('button', { name: /like/i });
+    const likeButtons = screen.getAllByTitle('likeButton');
     expect(likeButtons[0]).toHaveClass('text-red-500');
   });
 });
