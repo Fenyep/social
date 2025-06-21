@@ -10,13 +10,13 @@ interface HomeProps {
 }
 
 export default function PostsPage({ initialPosts }: HomeProps) {
-  const [posts, setPosts] = useState<PostWithAuthor[]>(initialPosts);
+  const [posts] = useState<PostWithAuthor[]>(initialPosts);
   const [filteredPosts, setFilteredPosts] =
     useState<PostWithAuthor[]>(initialPosts);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm] = useState('');
   const [likedPosts, setLikedPosts] = useState<Set<number>>(new Set());
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const postsPerPage = 6;
 
   // Load liked posts from localStorage on component mount
@@ -68,7 +68,7 @@ export default function PostsPage({ initialPosts }: HomeProps) {
             <>
               Found{' '}
               <span className="font-semibold">{filteredPosts.length}</span>{' '}
-              posts matching "{searchTerm}"
+              posts matching &quot;searchTerm&quot;
             </>
           ) : (
             <>

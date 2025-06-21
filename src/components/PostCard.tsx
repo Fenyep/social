@@ -1,5 +1,4 @@
 import { PostWithAuthor } from '@/entities/post.entity';
-import Link from 'next/link';
 import PostAvatar from './PostAvatar';
 import { useRouter } from 'next/navigation';
 

@@ -4,10 +4,6 @@ import { Post, PostWithAuthor } from '@/entities/post.entity';
 import { User } from '@/entities/user.entity';
 import Head from 'next/head';
 
-interface HomeProps {
-  initialPosts: PostWithAuthor[];
-}
-
 export default async function Home() {
   // Fetch posts and users concurrently
   const [postsResponse, usersResponse] = await Promise.all([
