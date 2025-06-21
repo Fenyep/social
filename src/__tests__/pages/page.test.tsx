@@ -69,7 +69,7 @@ describe('Home Page', () => {
   });
 
   it('renders page title and description', () => {
-    render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
+    render(<PostsPage initialPosts={mockPosts} />);
 
     expect(screen.getByText('Blog Explorer')).toBeInTheDocument();
     expect(
@@ -78,7 +78,7 @@ describe('Home Page', () => {
   });
 
   it('displays all posts initially', () => {
-    render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
+    render(<PostsPage initialPosts={mockPosts} />);
 
     expect(screen.getByText('First Test Post')).toBeInTheDocument();
     expect(screen.getByText('Second Test Post')).toBeInTheDocument();
@@ -86,7 +86,7 @@ describe('Home Page', () => {
   });
 
   it('filters posts based on search term', async () => {
-    render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
+    render(<PostsPage initialPosts={mockPosts} />);
 
     const searchInput = screen.getByPlaceholderText(
       /search posts, tags, or content/i,
@@ -103,7 +103,7 @@ describe('Home Page', () => {
   });
 
   it('shows no results message when search has no matches', async () => {
-    render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
+    render(<PostsPage initialPosts={mockPosts} />);
 
     const searchInput = screen.getByPlaceholderText(
       /search posts, tags, or content/i,
@@ -119,7 +119,7 @@ describe('Home Page', () => {
   });
 
   it('handles liking posts and saves to localStorage', async () => {
-    render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
+    render(<PostsPage initialPosts={mockPosts} />);
 
     const likeButton = screen.getAllByTitle('likeButton')[0];
     fireEvent.click(likeButton);
@@ -135,7 +135,7 @@ describe('Home Page', () => {
   it('loads liked posts from localStorage on mount', () => {
     localStorage.getItem = jest.fn().mockReturnValue(JSON.stringify([1]));
 
-    render(<PostsPage initialPosts={mockPosts} initialUsers={[]} />);
+    render(<PostsPage initialPosts={mockPosts} />);
 
     // The first post should be marked as liked
     const likeButtons = screen.getAllByTitle('likeButton');

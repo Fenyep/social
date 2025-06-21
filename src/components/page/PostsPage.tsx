@@ -1,16 +1,15 @@
 'use client';
 
-import { Post, PostWithAuthor, User } from '@/entities';
+import { PostWithAuthor } from '@/entities';
 import { useEffect, useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
 import PostCard from '../PostCard';
 
 interface HomeProps {
   initialPosts: PostWithAuthor[];
-  initialUsers: User[];
 }
 
-export default function PostsPage({ initialPosts, initialUsers }: HomeProps) {
+export default function PostsPage({ initialPosts }: HomeProps) {
   const [posts, setPosts] = useState<PostWithAuthor[]>(initialPosts);
   const [filteredPosts, setFilteredPosts] =
     useState<PostWithAuthor[]>(initialPosts);

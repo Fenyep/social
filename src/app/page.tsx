@@ -2,12 +2,10 @@ import NavBar from '@/components/Navbar';
 import PostPage from '@/components/page/PostsPage';
 import { Post, PostWithAuthor } from '@/entities/post.entity';
 import { User } from '@/entities/user.entity';
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
 interface HomeProps {
   initialPosts: PostWithAuthor[];
-  initialUsers: User[];
 }
 
 export default async function Home() {
@@ -19,6 +17,8 @@ export default async function Home() {
 
   const postsData = await postsResponse.json();
   const usersData = await usersResponse.json();
+
+  console.log(postsData);
 
   const posts: Post[] = postsData.posts;
   const users: User[] = usersData.users;
@@ -54,28 +54,8 @@ export default async function Home() {
         <NavBar />
 
         {/* Main Content */}
-        <PostPage initialPosts={postsWithAuthors} initialUsers={users} />
+        <PostPage initialPosts={postsWithAuthors} />
       </div>
     </>
   );
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   try {
-
-//     return {
-//       props: {
-//         initialPosts: postsWithAuthors,
-//         initialUsers: users,
-//       },
-//     };
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//     return {
-//       props: {
-//         initialPosts: [],
-//         initialUsers: [],
-//       },
-//     };
-//   }
-// };
